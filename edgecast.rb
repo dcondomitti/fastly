@@ -39,7 +39,7 @@ stats_requests.map do |stats_request|
     end
     
     stats.each do |key,value|
-      puts "stats.cdn.edgecast.#{environment}.#{stats_request.label}.#{key}: #{value}".downcase
+      puts "stats.cdn.edgecast.#{environment}.#{stats_request.label}.#{key} #{value} #{Time.now.to_i}".downcase
     end
   end
   hydra.queue(req)
