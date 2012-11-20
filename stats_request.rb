@@ -11,7 +11,7 @@ class StatsRequest
   end
 
   def url
-    puts "#{ENDPOINT}/realtimestats/customers/#{CUSTOMER_NUMBER}/media/#{platform}/#{content}"
+    "#{ENDPOINT}/realtimestats/customers/#{CUSTOMER_NUMBER}/media/#{platform}/#{content}"
   end
 
   def content

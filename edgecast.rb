@@ -30,7 +30,6 @@ hydra = Typhoeus::Hydra.new
 stats_requests.map do |stats_request|
   req = Typhoeus::Request.new stats_request.url, headers: headers
   req.on_complete do |response|
-
     if stats_request.value
       stats = JSON.parse(response.body).each_with_object({}) do |tuple, hash|
         hash[tuple[stats_request.key]] = tuple[stats_request.value]
@@ -47,4 +46,3 @@ stats_requests.map do |stats_request|
 end
 
 hydra.run
-
