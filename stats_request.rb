@@ -1,5 +1,5 @@
 class StatsRequest
-  attr_accessor :key
+  attr_accessor :granularity, :service
   
   def initialize(args)
     args.each do |k,v|
@@ -8,7 +8,7 @@ class StatsRequest
   end
 
   def url
-    "#{ENDPOINT}/service/#{SERVICE}/stats/#{granularity}"
+    "#{ENDPOINT}/service/#{service}/stats/#{granularity}"
   end
 
   def content
