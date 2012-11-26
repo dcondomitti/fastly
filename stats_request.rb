@@ -1,9 +1,6 @@
 class StatsRequest
-  attr_accessor :content, :key, :value, :label, :platform
-
-  # HTTP small object
-  DEFAULT_PLATFORM = 8
-
+  attr_accessor :key
+  
   def initialize(args)
     args.each do |k,v|
       instance_variable_set("@#{k}", v) unless v.nil?
@@ -11,7 +8,7 @@ class StatsRequest
   end
 
   def url
-    "#{ENDPOINT}/realtimestats/customers/#{CUSTOMER_NUMBER}/media/#{platform}/#{content}"
+    "#{ENDPOINT}/service/#{SERVICE}/stats/#{granularity}"
   end
 
   def content

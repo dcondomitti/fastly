@@ -4,25 +4,18 @@ require 'yaml'
 require 'json'
 require_relative 'stats_request'
 
-ENDPOINT = 'https://api.edgecast.com/v2'
-CUSTOMER_NUMBER = ENV['CUSTOMER_NUMBER']
+ENDPOINT = 'https://api.fastly.com'
 api_token = ENV['API_TOKEN']
 environment = ENV['ENVIRONMENT']
 
 headers = { 
-  authorization: "TOK: #{api_token}"
+  x_fastly_key: api_token
 }
 
 stats_requests = []
 
 # Cache Status (hit ratio, etc)
 stats_requests << StatsRequest.new(key: 'CacheStatus', value: 'Connections', label: 'cache_status')
-
-# HTTP Response Codes
-stats_requests << StatsRequest.new(key: 'StatusCode', value: 'Connections', label: 'http_status')
-
-# Total bandwidth
-stats_requests << StatsRequest.new(content: 'bandwidth', key: 'Result', label: 'bandwidth')
 
 requests = []
 hydra = Typhoeus::Hydra.new
